@@ -1,7 +1,6 @@
 package com.maestro.expensetracker.controller;
 
 import com.maestro.expensetracker.model.Expense;
-import com.maestro.expensetracker.repository.ExpenseRepository;
 import com.maestro.expensetracker.service.ExpenseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +32,10 @@ public class ExpenseController {
         return ResponseEntity.ok(expenseService.getAllExpenses());
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<Expense> getExpenseByName(@PathVariable String name){
+    //@GetMapping("/{name}")
+    //public ResponseEntity<Expense> getExpenseByName(@PathVariable String name){
+    @RequestMapping(value = "/get-expense", method = RequestMethod.GET)
+    public ResponseEntity<Expense> getExpenseByName(@RequestParam String name){
         return ResponseEntity.ok(expenseService.getExpenseByName(name));
     }
 
